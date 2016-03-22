@@ -27,7 +27,7 @@ def __git_command(url):
         subprocess.check_call(args)
     except subprocess.CalledProcessError:
         cmd = ' '.join(args)
-        exit("I had trouble calling the following command:\n    {}".format(cmd))
+        exit("I had trouble calling the following command:\n    {0}".format(cmd))
     return dir_
 
 
@@ -64,7 +64,7 @@ def _fork_and_add_remote(dir_):
         raise GitNoOriginRemoteException
     print terminal.cyan("You may now fork the repository by using hub:")
     print
-    print INDENT, "cd {}".format(dir_)
+    print INDENT, "cd {0}".format(dir_)
     print INDENT, "hub fork"
 
 
@@ -90,7 +90,7 @@ def _create_pth(dir_, virtualenv_cmd=None):
     shortname = os.path.basename(dir_)
     pth_file = os.path.join(venv, 'lib/python2.7/site-packages',
                             shortname + '.pth')
-    lines = [dir_, "# {} should come before pip'd packages".format(shortname),
+    lines = [dir_, "# {0} should come before pip'd packages".format(shortname),
              'import sys;'
              'sys.path.insert(0, sys.path.pop(-1));'
              "sys.path.insert(0, '')"]
@@ -106,7 +106,7 @@ def install_repo(repo, config=None, git_command=None):
             _install_repo(repo, config, git_command)
             _fork_and_add_remote(dir_)
         except RepoAlreadyInstalledException as e:
-            print "{t.yellow}{}{t.normal}".format(e, t=terminal)
+            print "{t.yellow}{0}{t.normal}".format(e, t=terminal)
 
         _create_pth(dir_)
         os.chdir(dir_)
@@ -119,7 +119,7 @@ def install_repo(repo, config=None, git_command=None):
         print "{t.cyan}Create it with:{t.normal}".format(
             _get_code_base_dir(), t=terminal)
         print
-        print INDENT, "mkdir {}".format(_get_code_base_dir())
+        print INDENT, "mkdir {0}".format(_get_code_base_dir())
         print
         print "{t.cyan}Or override it with:{t.normal}".format(t=terminal)
         print

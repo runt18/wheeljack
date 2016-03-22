@@ -91,12 +91,12 @@ class CreatePthTestCase(TestCase):
         _create_pth(new_dir, virtualenv_cmd=dummy_virtualenv)
         destination = '.venv/lib/python2.7/site-packages/foo.pth'
         ok_(os.path.exists(os.path.join(self.tmp_dir, destination)),
-            ".pth file not created in {}".format(destination))
+            ".pth file not created in {0}".format(destination))
         with open(os.path.join(self.tmp_dir, destination)) as f:
             expect = 3
             reality = len(f.readlines())
             eq_(expect, reality,
-                "Expected {} lines, got {}".format(expect, reality))
+                "Expected {0} lines, got {1}".format(expect, reality))
 
     def test_create_pth_existing_repo(self):
         """If there's an existing repo and no pth file we should create one."""
@@ -107,12 +107,12 @@ class CreatePthTestCase(TestCase):
         install_repo('nuggets', config=config)
         destination = '.venv/lib/python2.7/site-packages/nuggets.pth'
         ok_(os.path.exists(os.path.join(self.tmp_dir, destination)),
-            ".pth file not created in {}".format(destination))
+            ".pth file not created in {0}".format(destination))
         with open(os.path.join(self.tmp_dir, destination)) as f:
             expect = 3
             reality = len(f.readlines())
             eq_(expect, reality,
-                "Expected {} lines, got {}".format(expect, reality))
+                "Expected {0} lines, got {1}".format(expect, reality))
 
 
 class GetVenvOrCreateTestCase(TestCase):

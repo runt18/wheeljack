@@ -40,14 +40,14 @@ def get_config(config):
             with open(get_config_filename(), 'r') as stream:
                 __config = yaml.load(stream)
         except IOError:
-            raise ReposConfigException("{} could not be opened.".format(
+            raise ReposConfigException("{0} could not be opened.".format(
                 get_config_filename()
             ))
 
     for _, data in __config['repos'].iteritems():
         host = data.get('host', __config.get('global', {}).get(
             'host', 'github.com'))
-        data['url'] = 'git@{}:{}.git'.format(host, data.get('source'))
+        data['url'] = 'git@{0}:{1}.git'.format(host, data.get('source'))
     return __config
 
 
